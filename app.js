@@ -17,15 +17,22 @@ app.get('/', function(req, res) {
 });
 
 io.on('connection', function(socket){
+  io.emit('updateReq');
   io.emit('alert', "A new user has connected");
   socket.on('msg', function(msg){
     io.emit('msg', msg);
   });
   socket.on('namechange', function(olduser, user){
     io.emit('alert', "user \'" + olduser + "\' is now known as \'" + user +"\'");
+    io.emit('updateReq');
   });
+  socket.on('userUpdate', function(user){
+    io.emit('addUser', user);
+  });
+
 });
 io.on('disconnect', function(socket){
+  io.emit('updateReq');
   io.emit('alert', "A user has disconnected");
 });
 

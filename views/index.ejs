@@ -1,16 +1,17 @@
-<!doctype html>
-<html>
-  <head>
-    <link rel="stylesheet" href="/css/style.css" />
-    <title><%=title%></title>
-  </head>
-  <body>
-    <ul id="messages"></ul>
-    <form action="">
-      <input id="msg" autocomplete="off" /><button id="send">Send</button>
-    </form>
-    <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
-    <script src="http://code.jquery.com/jquery-1.11.1.js"></script>
-    <script src="/js/scripts.js"></script>
-  </body>
-</html>
+<% include ./partials/head %>
+
+<div class="col-xs-4 col-xs-offset-8 col-sm-3">
+  <h4>Current Users: </h4>
+  <ul class="list-group" id="users"></ul>
+</div>
+
+<ul id="messages" class="col-sm-9"></ul>
+
+<form class="form" action="">
+  <div class="form-group">
+    <input class="form_control col-xs-10 col-sm-11" id="msg" autocomplete="off" />
+    <button id="send" class="btn btn-primary col-xs-2 col-sm-1">Send</button>
+  </div>
+</form>
+
+<% include ./partials/footer %>

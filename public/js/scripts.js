@@ -3,11 +3,12 @@
     var socket = io();
     var user = "anonymous";
     $('#msg').focus();
-    $('#messages').append($('<li class="alert">').text("Type \'\/nick new-user-name\' to change your username"));
+    $('#messages').append($('<li class="notice">').text("Type \'\/nick new-user-name\' to change your username"));
     $('html').click(function() {
       $('#msg').focus();
     });
-    $('form').submit(function(){
+
+    $('form').submit(function() {
       var arr = $('#msg').val().split(" ");
       if (arr[0] == '/nick') {
         var olduser = user;
@@ -21,11 +22,18 @@
         return false;
       }
     });
-    socket.on('msg', function(msg){
-        $('#messages').append($('<li>').text(msg));
-      });
-      socket.on('alert', function(msg) {
-        $('#messages').append($('<li class="alert">').text(msg));
-      });
+    socket.on('msg', function(msg) {
+      $('#messages').append($('<li class="msg">').text(msg));
+    });
+    socket.on('alert', function(msg) {
+      $('#messages').append($('<li class="notice">').text(msg));
+    });
+    socket.on('updateReq', function() {
+      $('#users').empty();
+      socket.emit('userUpdate', user);
+    });
+    socket.on('addUser', function(newUser) {
+      $('#users').append($('<li class="list-group-item borderless">').text(newUser));
+    });
   });
 }());

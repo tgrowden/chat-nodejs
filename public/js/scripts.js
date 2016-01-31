@@ -12,13 +12,13 @@
         socket.emit('namechange', olduser, user);
         return false;
       } else {
-        socket.emit('msg', $('#msg').val());
+        socket.emit('msg', user + ":  " + $('#msg').val());
         $('#msg').val('');
         return false;
       }
     });
     socket.on('msg', function(msg){
-        $('#messages').append($('<li>').text(user + ": " + msg));
+        $('#messages').append($('<li>').text(msg));
       });
       socket.on('alert', function(msg) {
         $('#messages').append($('<li class="alert">').text(msg));

@@ -4,7 +4,7 @@
     var user = "anonymous";
     $('#msg').focus();
     $('#messages').append($('<li class="alert">').text("Type \'\/nick new-user-name\' to change your username"));
-    $('body').click(function() {
+    $('html').click(function() {
       $('#msg').focus();
     });
     $('form').submit(function(){

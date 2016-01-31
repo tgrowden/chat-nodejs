@@ -25,6 +25,9 @@ io.on('connection', function(socket){
     io.emit('alert', "user \'" + olduser + "\' is now known as \'" + user +"\'");
   });
 });
+io.on('disconnect', function(socket){
+  io.emit('alert', "A user has disconnected");
+});
 
 http.listen(Port, function(){
   console.log('listening on *:' + Port);

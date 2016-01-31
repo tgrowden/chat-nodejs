@@ -2,7 +2,11 @@
   $(function() {
     var socket = io();
     var user = "anonymous";
+    $('#msg').focus();
     $('#messages').append($('<li class="alert">').text("Type \'\/nick new-user-name\' to change your username"));
+    $('body').click(function() {
+      $('#msg').focus();
+    });
     $('form').submit(function(){
       var arr = $('#msg').val().split(" ");
       if (arr[0] == '/nick') {

@@ -24,9 +24,11 @@
     });
     socket.on('msg', function(msg) {
       $('#messages').append($('<li class="msg">').text(msg));
+      $('body').scrollTop($('body')[0].scrollHeight);
     });
     socket.on('alert', function(msg) {
       $('#messages').append($('<li class="notice">').text(msg));
+      $('body').scrollTop($('body')[0].scrollHeight);
     });
     socket.on('updateReq', function() {
       $('#users').empty();

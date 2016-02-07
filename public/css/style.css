@@ -45,3 +45,11 @@ form {
   padding-top: inherit!important;
   padding-bottom: 2px!important;
 }
+
+ul#messages {
+  white-space: pre-wrap;
+  white-space: -moz-pre-wrap;
+  white-space: -pre-wrap;
+  white-space: -o-pre-wrap;
+  word-wrap: break-word;
+}
